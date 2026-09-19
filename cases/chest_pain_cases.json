@@ -1,0 +1,30 @@
+[
+  {
+    "case_id": "CP001",
+    "chief_complaint": "胸痛",
+    "hidden_facts": {
+      "onset": "30分钟前突然出现",
+      "location": "胸骨后",
+      "character": "压榨样",
+      "radiation": "向左肩和左上臂放射",
+      "duration": "持续20分钟",
+      "dyspnea": "伴呼吸困难",
+      "sweating": "伴出汗"
+    },
+    "core_slots": [
+      "onset",
+      "location",
+      "character",
+      "radiation",
+      "duration",
+      "dyspnea",
+      "sweating"
+    ],
+    "simulator_behavior": {
+      "scripted_failures": {
+        "radiation": {"Structured": 1},
+        "dyspnea": {"Structured": 1, "LLM": 1}
+      }
+    }
+  }
+]
