@@ -18,12 +18,22 @@ SLOT_LABELS = {
 SLOT_KEYWORDS = {
     "onset": ("什么时候", "何时", "多久前", "突然", "起病", "开始"),
     "location": ("哪里", "哪儿", "部位", "位置", "胸骨"),
-    "character": ("性质", "感觉", "什么样", "压榨", "刺痛", "闷"),
+    "character": ("性质", "什么样", "压榨", "刺痛", "闷痛"),
     "radiation": ("放射", "肩", "胳膊", "手臂", "背", "下颌"),
     "duration": ("持续", "多久", "多长时间", "几分钟"),
     "dyspnea": ("呼吸困难", "喘", "气短", "憋气"),
     "sweating": ("出汗", "冒汗", "冷汗"),
 }
+
+SLOT_PRIORITY = [
+    "radiation",
+    "duration",
+    "dyspnea",
+    "sweating",
+    "onset",
+    "location",
+    "character",
+]
 
 STATUS_LABELS = {"unknown": "未获得", "obtained": "已获得", "denied": "已否认"}
 
@@ -32,9 +42,22 @@ def slot_label(slot: str) -> str:
     return SLOT_LABELS.get(slot, slot)
 
 
-def question_targets_slot(question: str, target_slot: str) -> bool:
+def detect_question_slots(question: str) -> list[str]:
+    """Infer the clinical concepts addressed by a freely generated question."""
     compact = question.replace(" ", "")
-    return any(keyword in compact for keyword in SLOT_KEYWORDS.get(target_slot, (target_slot,)))
+    detected = [
+        slot
+        for slot in SLOT_PRIORITY
+        if any(keyword in compact for keyword in SLOT_KEYWORDS.get(slot, ()))
+    ]
+    if any(
+        phrase in compact
+        for phrase in ("伴随症状", "其他症状", "还伴有", "还有什么不舒服")
+    ):
+        for slot in ("dyspnea", "sweating"):
+            if slot not in detected:
+                detected.append(slot)
+    return detected
 
 
 def infer_slot_status(value: str) -> str:
@@ -48,6 +71,16 @@ def known_information_text(state: ClinicalState) -> str:
         return "暂无"
     return "；".join(
         f"{slot_label(slot)}：{payload['value']}" for slot, payload in known.items()
+    )
+
+
+def dialogue_history_text(state: ClinicalState) -> str:
+    if not state.dialogue_history:
+        return "暂无既往对话"
+    return "\n".join(
+        f"第{item['turn']}轮 [{item['channel']}] 医生：{item['question']}\n"
+        f"患者：{item['patient_answer']}"
+        for item in state.dialogue_history
     )
 
 

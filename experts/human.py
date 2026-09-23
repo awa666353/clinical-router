@@ -11,10 +11,8 @@ from experts.base import Expert
 class HumanExpert(Expert):
     name = "Human"
 
-    def ask(
-        self, state: ClinicalState, target_slot: str, **kwargs: Any
-    ) -> dict[str, Any]:
-        del state, target_slot
+    def ask(self, state: ClinicalState, **kwargs: Any) -> dict[str, Any]:
+        del state
         question = str(kwargs.get("question", "")).strip()
         if not question:
             return {"question": "", "requires_human_input": True, "provider": "human"}

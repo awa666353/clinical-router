@@ -28,6 +28,12 @@ class Settings:
     initial_llm_budget: int = int(os.getenv("INITIAL_LLM_BUDGET", "4"))
     initial_human_budget: int = int(os.getenv("INITIAL_HUMAN_BUDGET", "1"))
     max_turns: int = int(os.getenv("MAX_TURNS", "12"))
+    completeness_weight: float = float(os.getenv("COMPLETENESS_WEIGHT", "1.0"))
+    turn_penalty: float = float(os.getenv("TURN_PENALTY", "0.02"))
+    cost_weight: float = float(os.getenv("COST_WEIGHT", "0.05"))
+    structured_cost: float = float(os.getenv("STRUCTURED_COST", "0.0"))
+    llm_cost: float = float(os.getenv("LLM_COST", "0.2"))
+    human_cost: float = float(os.getenv("HUMAN_COST", "1.0"))
     cases_path: Path = BASE_DIR / "cases" / "chest_pain_cases.json"
     trajectory_path: Path = BASE_DIR / "logs" / "trajectory.jsonl"
 

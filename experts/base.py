@@ -12,7 +12,5 @@ class Expert(ABC):
     name: str
 
     @abstractmethod
-    def ask(
-        self, state: ClinicalState, target_slot: str, **kwargs: Any
-    ) -> dict[str, Any]:
+    def ask(self, state: ClinicalState, **kwargs: Any) -> dict[str, Any]:
         raise NotImplementedError

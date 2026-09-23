@@ -6,6 +6,7 @@ from typing import Any
 
 from environment.state import ClinicalState
 from experts.base import Expert
+from utils.slot_utils import SLOT_PRIORITY
 
 
 QUESTION_BANK = {
@@ -22,11 +23,19 @@ QUESTION_BANK = {
 class StructuredExpert(Expert):
     name = "Structured"
 
-    def ask(
-        self, state: ClinicalState, target_slot: str, **kwargs: Any
-    ) -> dict[str, Any]:
-        del state, kwargs
-        question = QUESTION_BANK.get(target_slot)
-        if not question:
-            raise KeyError(f"Structured question is not configured for slot: {target_slot}")
-        return {"question": question, "provider": "structured_question_bank"}
+    def ask(self, state: ClinicalState, **kwargs: Any) -> dict[str, Any]:
+        del kwargs
+        focus = next(
+            (
+                slot
+                for slot in SLOT_PRIORITY
+                if slot in state.slots and state.slots[slot]["status"] == "unknown"
+            ),
+            None,
+        )
+        if focus is None:
+            raise RuntimeError("Structured Expert has no unresolved clinical information")
+        return {
+            "question": QUESTION_BANK[focus],
+            "provider": "structured_question_bank",
+        }
