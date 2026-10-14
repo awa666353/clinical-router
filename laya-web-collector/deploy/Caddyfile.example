@@ -1,0 +1,53 @@
+# Caddyfile for the hosted real-pilot collector (W9).
+#
+# Usage:
+#   cp deploy/Caddyfile.example deploy/Caddyfile
+#   # replace collector.<domain> below with the real hostname
+#   docker compose -f deploy/compose.supabase.yml up -d --build
+#
+# Caddy obtains and renews the TLS certificate automatically, so the domain's
+# DNS A/AAAA record must already point at this host before first start
+# (see deploy/HOSTED_DEPLOYMENT.md for the TTL / rollback procedure).
+
+collector.<domain> {
+	# Compression for the JSON/HTML/JS responses.
+	encode zstd gzip
+
+	# The API is reachable only on the compose network as `api:8080`.
+	reverse_proxy api:8080 {
+		# Sensible timeouts: fail fast on an unreachable API, but allow long
+		# LLM-backed requests to finish before a response header is required.
+		transport http {
+			dial_timeout 5s
+			response_header_timeout 300s
+		}
+	}
+
+	# W8: TLS/HSTS and MIME sniffing.  The app middleware sets these same
+	# values plus CSP / X-Frame-Options / Referrer-Policy; Caddy replaces only
+	# the two headers named here, all others pass through unconflicted.
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		-Server
+	}
+
+	# W8.5: access logging stays OFF.  Patient links carry bearer tokens in
+	# /patient?token=... query strings (and /api/patient/session/<token>
+	# paths); those tokens must never appear in disk logs.  Do not enable
+	# access logs unless a redaction filter is installed first.  The app's
+	# own logging is already redacted.
+	log off
+}
+
+# --- Alternative: Render / Fly.io / Railway (no Caddy) ---------------------
+# When D3 chooses a managed container platform instead of a raw host:
+#   1. Deploy this same image twice: a web service with the default uvicorn
+#      CMD, and a second service whose command is
+#      ["python","scripts/process_question_jobs.py"].
+#   2. Keep exactly ONE worker; disable scale-to-zero on both services.
+#   3. Let the platform terminate TLS and expose only the web service; point
+#      the domain at the platform-provided hostname.
+#   4. Inject the variables from deploy/env.supabase.example through the
+#      platform's secret manager (never commit them).
+#   5. Do not deploy this Caddyfile or the caddy service in that topology.

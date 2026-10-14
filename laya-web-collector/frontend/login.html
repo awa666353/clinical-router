@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>登录 · Laya 临床事实采集台</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="auth-body">
+  <main class="auth-page">
+    <form class="card auth-card" id="login-form">
+      <div class="auth-brand"><div class="brand-mark">L</div><div>Laya 临床事实采集台</div></div>
+      <p class="muted auth-copy">请使用分配的账号登录。</p>
+      <div class="auth-field">
+        <label class="label" for="login-email">邮箱</label>
+        <input id="login-email" name="email" type="email" autocomplete="username" required />
+      </div>
+      <div class="auth-field">
+        <label class="label" for="login-password">密码</label>
+        <input id="login-password" name="password" type="password" autocomplete="current-password" required />
+      </div>
+      <button class="btn primary auth-submit" id="login-submit" type="submit">登录</button>
+      <p id="login-error" role="alert" aria-live="polite" class="auth-error"></p>
+    </form>
+  </main>
+  <script src="/assets/app.js" defer></script>
+  <script src="/assets/page-login.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+:root {
+  --game-ink: #183a39;
+  --game-soft: #607572;
+  --game-green: #0d7568;
+  --game-cream: #f5f5ec;
+  --game-lime: #def19e;
+  --game-coral: #ffbba1;
+}
+
+.game-body {
+  color: var(--game-ink);
+  background: radial-gradient(circle at 8% 8%, #e8f6d8 0, transparent 31%),
+              radial-gradient(circle at 88% 30%, #ffe9db 0, transparent 30%),
+              var(--game-cream);
+}
+.game-topbar {
+  min-height: 72px;
+  max-width: 1320px;
+  margin: auto;
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.game-logo { display: inline-flex; align-items: center; gap: 11px; font-weight: 900; font-size: 22px; letter-spacing: -.04em; }
+.game-logo small { font-weight: 600; font-size: 13px; letter-spacing: 0; color: var(--game-soft); }
+.game-logo-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 12px; background: var(--game-ink); color: var(--game-lime); font-size: 22px; }
+.game-top-note { font-size: 12px; letter-spacing: .08em; color: var(--game-soft); }
+.game-home { max-width: 1320px; padding: 12px 28px 70px; margin: auto; }
+.game-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(32px, 5vw, 62px);
+  border-radius: 34px;
+  background: #173e3b;
+  color: #fff;
+  box-shadow: 0 24px 60px rgba(21, 62, 56, .18);
+}
+.game-hero::after { content: "✳"; position: absolute; right: 5%; top: -58px; font-size: clamp(200px, 27vw, 390px); line-height: 1; color: rgba(222, 241, 158, .12); pointer-events: none; transform: rotate(13deg); }
+.game-kicker, .game-eyebrow { text-transform: uppercase; font-size: 12px; font-weight: 800; letter-spacing: .13em; }
+.game-kicker { color: var(--game-lime); }
+.game-hero h1 { position: relative; z-index: 1; font-size: clamp(42px, 7vw, 82px); line-height: 1.1; letter-spacing: -.06em; margin: 19px 0; }
+.game-hero h1 span { color: var(--game-lime); }
+.game-hero p { position: relative; z-index: 1; max-width: 575px; line-height: 1.8; color: #d4e7e2; font-size: 16px; }
+.game-hero-steps { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 34px; color: #d4e7e2; font-size: 13px; }
+.game-hero-steps span { display: inline-flex; gap: 8px; align-items: center; }
+.game-hero-steps b { color: var(--game-lime); }
+.game-launch { padding: 38px 0 18px; }
+.game-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+.game-eyebrow { color: var(--game-green); }
+.game-section-heading h2 { font-size: clamp(26px, 3.6vw, 40px); letter-spacing: -.05em; margin: 4px 0 0; }
+.game-status { white-space: nowrap; color: var(--game-green); background: #e9f4e3; padding: 8px 13px; border-radius: 100px; font-size: 12px; font-weight: 800; }
+.role-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.role-card { min-height: 310px; border: 1px solid #dce5d7; border-radius: 26px; padding: clamp(23px, 3vw, 34px); display: flex; flex-direction: column; align-items: flex-start; box-shadow: 0 14px 36px rgba(30, 67, 59, .07); }
+.doctor-role { background: #fafff4; }
+.patient-role { background: #fff6ef; border-color: #f3dfd4; }
+.role-icon { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 18px; background: #e3f1dc; font-size: 27px; }
+.patient-role .role-icon { background: #ffe4d8; }
+.role-tag { margin-top: 17px; font-size: 11px; letter-spacing: .12em; font-weight: 800; color: var(--game-green); }
+.patient-role .role-tag { color: #a85e43; }
+.role-card h3 { font-size: 28px; letter-spacing: -.04em; margin: 4px 0 7px; }
+.role-card p { color: var(--game-soft); line-height: 1.7; max-width: 440px; margin: 0 0 24px; }
+.game-button { width: 100%; border: 0; padding: 13px 17px; border-radius: 13px; display: flex; justify-content: space-between; font-weight: 800; transition: transform .15s, box-shadow .15s; }
+.game-button:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(13,117,104,.14); }
+.game-button:disabled { opacity: .5; cursor: wait; }
+.game-button.primary { background: var(--game-green); color: white; }
+.game-button.secondary { margin-top: 9px; color: var(--game-green); background: #e6f4e6; }
+.game-button.dark { margin-top: auto; color: white; background: #274a48; }
+.patient-role .game-button.dark { margin-top: auto; }
+.patient-role .game-button.secondary { color: #8f4d34; background: #ffe4d8; }
+.game-hint { color: var(--game-soft); font-size: 13px; margin: 18px 0 0; }
+.game-research { margin-top: 22px; border-top: 1px solid #dce5d7; color: var(--game-soft); }
+.game-research summary { padding: 18px 2px; font-size: 13px; font-weight: 700; cursor: pointer; }
+.game-research-inner { padding: 0 2px 22px; }
+.game-research-inner p { line-height: 1.65; }
+.game-stats, .game-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.game-stats span, .game-links a, .game-links button { padding: 9px 13px; border-radius: 11px; background: #fff; border: 1px solid #dce5d7; color: var(--game-ink); font-size: 13px; }
+.game-links { margin-top: 18px; }
+.game-links button { cursor: pointer; }
+.game-stats b { margin-left: 6px; }
+
+.game-workspace { max-width: 1320px; margin: auto; padding: 22px 28px 70px; }
+.game-workspace .topbar { position: static; border: 0; background: transparent; padding: 0 0 22px; height: auto; }
+.game-workspace .workspace { grid-template-columns: minmax(230px, 290px) minmax(0, 1fr); }
+.game-workspace .ledger-card { grid-column: 1 / -1; }
+.game-workspace .side-card, .game-workspace .chat-card, .game-workspace .ledger-card, .game-brief, .game-invite { border-radius: 23px; box-shadow: 0 10px 35px rgba(20,60,55,.07); }
+.game-workspace .side-card, .game-workspace .chat-card { padding: 23px; }
+.game-workspace .side-card { background: #fafff4; }
+.game-workspace .fact-item { background: #fff; }
+.game-workspace .fact-item.active { border-color: var(--game-green); box-shadow: 0 0 0 3px rgba(13,117,104,.13); }
+.game-workspace .doctor-summary { background: #173e3b; color: #fff; border: 0; padding: 24px 28px; }
+.game-workspace .doctor-summary .muted, .game-workspace .doctor-summary .tiny { color: #cbe2d9; }
+.game-workspace .doctor-summary .chief-value { font-size: 25px; }
+.game-progress { height: 8px; border-radius: 100px; background: #dce9db; overflow: hidden; margin: 15px 0 7px; }
+.game-progress > span { display: block; height: 100%; width: 0; background: var(--game-green); border-radius: inherit; transition: width .3s ease; }
+.game-invite { padding: 17px 20px; background: #e8f5dc; border: 1px solid #cee4bf; margin: 0 0 18px; }
+.game-invite p { margin: 5px 0 12px; color: var(--game-soft); font-size: 13px; }
+.game-invite-line { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.game-invite-line input { flex: 1; min-width: 210px; padding: 9px 11px; background: #fff; }
+.game-workspace details.ledger-card { padding: 18px 23px; }
+.game-workspace details.ledger-card > summary { cursor: pointer; font-weight: 800; }
+.game-workspace details.ledger-card[open] > summary { margin-bottom: 16px; }
+.game-workspace .chat-log { min-height: 330px; }
+.roleplay-active #encounter-pill, .roleplay-active #current-user { display: none; }
+
+.game-doctor { display: grid; grid-template-columns: minmax(230px, 310px) minmax(0, 1fr); gap: 18px; align-items: stretch; }
+.game-score-column { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.game-doctor .score-card, .game-doctor .free-chat-card { border-radius: 23px; box-shadow: 0 10px 35px rgba(20,60,55,.07); padding: 26px; }
+.game-doctor .game-notes-card { border-radius: 23px; box-shadow: 0 10px 35px rgba(20,60,55,.07); padding: 23px; background: #fff; }
+.game-notes-card > p { line-height: 1.45; margin: 7px 0 17px; }
+.game-round-notes { display: flex; flex-direction: column; gap: 11px; }
+.game-round-note { border: 1px solid #e1e9e0; border-radius: 15px; padding: 13px; background: #fbfdf8; }
+.game-round-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 13px; }
+.game-round-heading span { color: var(--game-green); font-weight: 800; white-space: nowrap; }
+.game-note-text { margin-top: 10px; color: #425753; font-size: 13px; line-height: 1.7; white-space: normal; overflow-wrap: anywhere; }
+.game-doctor .score-card { background: #e8f5dc; border: 1px solid #cfe6bd; display: flex; flex-direction: column; min-height: 260px; }
+.game-doctor .score-number { color: var(--game-green); font-size: clamp(90px, 12vw, 150px); line-height: 1; font-weight: 900; letter-spacing: -.09em; margin-top: 20px; }
+.game-doctor .score-number.score-bump { animation: score-pop .55s ease; }
+.game-doctor .score-unit { color: var(--game-green); font-size: 19px; font-weight: 800; }
+.game-doctor .score-status { color: var(--game-soft); font-size: 13px; margin-top: auto; }
+.game-doctor .free-chat-card { background: #fff; }
+.game-doctor .free-chat-card .chat-log { min-height: 330px; max-height: 52vh; }
+.game-doctor textarea { width: 100%; resize: vertical; min-height: 85px; }
+@keyframes score-pop { 0% { transform: scale(1); } 45% { transform: scale(1.16); } 100% { transform: scale(1); } }
+
+.patient-game-brief { background: #fff8ec; border: 1px solid #ebd5aa; border-radius: 20px; padding: 19px; margin-bottom: 18px; }
+.patient-game-brief h2 { margin: 0 0 8px; font-size: 21px; }
+.patient-game-brief p { color: #665d4d; line-height: 1.65; }
+.patient-game-brief summary { cursor: pointer; font-weight: 800; }
+.patient-game-brief ul { margin: 10px 0; padding-left: 22px; line-height: 1.8; }
+.patient-game-brief .invite-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 16px; }
+.patient-game-brief .invite-row input { flex: 1; min-width: 200px; }
+.patient-game-brief .invite-row button { flex: none; }
+.patient-game-brief code { overflow-wrap: anywhere; }
+.patient-chat .history-pair { display: contents; }
+
+@media (max-width: 820px) {
+  .game-topbar { padding: 14px 17px; }
+  .game-top-note { display: none; }
+  .game-home { padding: 0 16px 50px; }
+  .game-hero { border-radius: 24px; }
+  .role-grid { grid-template-columns: 1fr; }
+  .role-card { min-height: 285px; }
+  .game-workspace { padding: 16px 14px 50px; }
+  .game-workspace .workspace { grid-template-columns: 1fr; }
+  .game-doctor { grid-template-columns: 1fr; }
+  .game-doctor .score-card { min-height: 210px; }
+  .game-doctor .score-number { margin-top: 10px; }
+  .game-workspace .ledger-card { grid-column: 1; }
+  .game-workspace .topbar { flex-wrap: wrap; }
+}

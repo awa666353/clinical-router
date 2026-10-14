@@ -1,0 +1,61 @@
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+supabase/.env
+supabase/.env.*
+!supabase/env.example
+deploy/*.env
+deploy/Caddyfile
+
+# Private keys / certificates / credential files
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+credentials*
+
+# Local databases, exports, backups and runtime data
+local_pilot.sqlite3
+*.sqlite3
+*.db
+exports/
+backups/
+*.dump
+*.sql.gz
+
+# Local-only tooling, recordings, logs and dependency bundles
+.omni-work/
+.aws/
+.agents/
+.codex/
+*.log
+
+# Python caches and test/build artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+build/
+dist/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Keep safe templates/examples in the repository
+!env.example
+!supabase/env.example
+!deploy/env.supabase.example
+!deploy/Caddyfile.example
+!deploy/Caddyfile.ip.example
+!deploy/nginx.conf.example
+
+# Alternate local Git metadata when the workspace-provided .git is read-only
+.git-local/

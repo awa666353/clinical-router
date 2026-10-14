@@ -1,0 +1,16 @@
+[Unit]
+Description=Laya real-pilot async question worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=laya
+WorkingDirectory=/opt/laya-web-collector
+EnvironmentFile=/etc/laya-web-collector.env
+ExecStart=/opt/laya-web-collector/.venv/bin/python scripts/process_question_jobs.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

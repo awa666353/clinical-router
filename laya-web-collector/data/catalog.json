@@ -1,0 +1,811 @@
+{
+  "catalog_version": "real-pilot-chest-pain-v1",
+  "topic": "chest_pain",
+  "review_status": "provisional_for_pilot_ui",
+  "facts": [
+    {
+      "answer_schema": {
+        "allowed_values": [
+          "diaphoresis",
+          "dyspnea",
+          "nausea",
+          "hemoptysis",
+          "fever",
+          "leg_swelling",
+          "palpitations",
+          "regurgitation",
+          "dysphagia",
+          "none",
+          "unknown"
+        ],
+        "kind": "list",
+        "unit": "",
+        "value_labels": {
+          "diaphoresis": "出冷汗",
+          "dysphagia": "吞咽困难",
+          "dyspnea": "呼吸困难",
+          "fever": "发热",
+          "hemoptysis": "咳血",
+          "leg_swelling": "下肢肿胀",
+          "nausea": "恶心",
+          "none": "无伴随症状",
+          "palpitations": "心悸",
+          "regurgitation": "反酸",
+          "unknown": "不清楚"
+        }
+      },
+      "clinical_fact_id": "associated_symptoms",
+      "criticality": 5,
+      "display_name": "胸痛伴随症状",
+      "notes": "伴随症状集合。",
+      "provenance": {},
+      "question_variant_ids": [
+        "qv-b4781b08ccbc0c959d9e",
+        "qv-59b888bbfa1360b5d644",
+        "qv-a42e73adefdc9c81d40f"
+      ],
+      "review_status": "provisional",
+      "source_row_ids": [
+        "chest_pain::心肌缺血性冠状动脉::0004",
+        "chest_pain::胸膜肺源性::0003",
+        "chest_pain::食管胃肠源性::0003"
+      ]
+    },
+    {
+      "answer_schema": {
+        "allowed_values": [
+          "inspiration",
+          "lying_flat",
+          "cough",
+          "exertion",
+          "emotion",
+          "cold",
+          "specific_movement",
+          "meal",
+          "lying_down",
+          "none",
+          "unknown"
+        ],
+        "kind": "list",
+        "unit": "",
+        "value_labels": {
+          "cold": "寒冷诱发",
+          "cough": "咳嗽加重",
+          "emotion": "情绪诱发",
+          "exertion": "活动诱发",
+          "inspiration": "吸气加重",
+          "lying_down": "躺下加重",
+          "lying_flat": "平卧加重",
+          "meal": "进食后加重",
+          "none": "无加重因素",
+          "specific_movement": "特定动作诱发",
+          "unknown": "不清楚"
+        }
+      },
+      "clinical_fact_id": "pain_aggravating_factor",
+      "criticality": 4,
+      "display_name": "胸痛加重因素",
+      "notes": "可同时存在多个加重因素。",
+      "provenance": {},
+      "question_variant_ids": [
+        "qv-efa97bfe9d2b530da9c4",
+        "qv-6fa19262ba60ae237de9",
+        "qv-fb67df18cdb4ff06924a",
+        "qv-8ff104f18858f38fb54e",
+        "qv-0d8a9c83a55294b1141c"
+      ],
+      "review_status": "provisional",
+      "source_row_ids": [
+        "chest_pain::心包源性::0001",
+        "chest_pain::心肌缺血性冠状动脉::0002",
+        "chest_pain::胸壁骨骼肌源性::0001",
+        "chest_pain::胸膜肺源性::0002",
+        "chest_pain::食管胃肠源性::0001"
+      ]
+    },
+    {
+      "answer_schema": {
+        "allowed_values": [
+          "tearing",
+          "sharp",
+          "pressure",
+          "burning",
+          "dull",
+          "unknown"
+        ],
+        "kind": "categorical",
+        "unit": "",
+        "value_labels": {
+          "burning": "烧灼感",
+          "dull": "钝痛",
+          "pressure": "压榨或紧缩感",
+          "sharp": "尖锐刺痛",
+          "tearing": "撕裂样",
+          "unknown": "不清楚"
+        }
+      },
+      "clinical_fact_id": "pain_character",
+      "criticality": 5,
+      "display_name": "胸痛性质",
+      "notes": "疼痛性质；跨 card 复用同一个事实。",
+      "provenance": {},
+      "question_variant_ids": [
+        "qv-508f1a278001bffaaffc",
+        "qv-9b08c280ce03d2e39343",
+        "qv-2c09a03e50c96d80b26e",
+        "qv-729fdacf7684b25a074b",
+        "qv-86942363cb16d632ee38",
+        "qv-a37cf84e7ff69682de52"
+      ],
+      "review_status": "provisional",
+      "source_row_ids": [
+        "chest_pain::主动脉源性::0001",
+        "chest_pain::心包源性::0000",
+        "chest_pain::心肌缺血性冠状动脉::0000",
+        "chest_pain::胸壁骨骼肌源性::0002",
+        "chest_pain::胸膜肺源性::0001",
+        "chest_pain::食管胃肠源性::0000"
+      ]
+    },
+    {
+      "answer_schema": {
+        "allowed_values": [
+          "seconds",
+          "minutes",
+          "tens_of_minutes",
+          "hours",
+          "persistent",
+          "unknown"
+        ],
+        "kind": "ordinal",
+        "unit": "",
+        "value_labels": {
+          "hours": "数小时",
+          "minutes": "数分钟",
+          "persistent": "持续不缓解",
+          "seconds": "数秒",
+          "tens_of_minutes": "数十分钟",
+          "unknown": "不清楚"
+        }
+      },
+      "clinical_fact_id": "pain_duration",
+      "criticality": 5,
+      "display_name": "胸痛持续时间",
+      "notes": "持续时间等级，暂不对齐到连续数值。",
+      "provenance": {},
+      "question_variant_ids": [
+        "qv-b700b713bfa746a018ef"
+      ],
+      "review_status": "provisional",
+      "source_row_ids": [
+        "chest_pain::心肌缺血性冠状动脉::0005"
+      ]
+    },
+    {
+      "answer_schema": {
+        "allowed_values": [
+          "focal_chest_wall",
+          "diffuse",
+          "retrosternal",
+          "pleuritic",
+          "epigastric",
+          "unknown"
+        ],
+        "kind": "categorical",
+        "unit": "",
+        "value_labels": {
+          "diffuse": "弥漫",
+          "epigastric": "上腹部",
+          "focal_chest_wall": "局限胸壁",
+          "pleuritic": "胸膜性",
+          "retrosternal": "胸骨后",
+          "unknown": "不清楚"
+        }
+      },
+      "clinical_fact_id": "pain_location",
+      "criticality": 3,
+      "display_name": "胸痛部位",
+      "notes": "胸痛的主要部位。Stage-I 只保留少量稳定类别。",
+      "provenance": {},
+      "question_variant_ids": [
+        "qv-9fb1d7e175040af88186"
+      ],
+      "review_status": "provisional",
+      "source_row_ids": [
+        "chest_pain::胸壁骨骼肌源性::0000"
+      ]
+    },
+    {
+      "answer_schema": {
+        "allowed_values": [
+          "sudden_maximal",
+          "sudden_not_maximal",
+          "gradual",
+          "unknown"
+        ],
+        "kind": "categorical",
+        "unit": "",
+        "value_labels": {
+          "gradual": "逐渐起病",
+          "sudden_maximal": "突发并瞬间达峰",
+          "sudden_not_maximal": "突发但非峰值",
+          "unknown": "不清楚"
+        }
+      },
+      "clinical_fact_id": "pain_onset_pattern",
+      "criticality": 5,
+      "display_name": "胸痛起病模式",
+      "notes": "起病速度及是否瞬间达峰，不与具体疾病绑定。",
+      "provenance": {},
+      "question_variant_ids": [
+        "qv-db90efa1c5e8c303c61a",
+        "qv-adc00e1613fdd1ba9b7c"
+      ],
+      "review_status": "provisional",
+      "source_row_ids": [
+        "chest_pain::主动脉源性::0000",
+        "chest_pain::胸膜肺源性::0000"
+      ]
+    },
+    {
+      "answer_schema": {
+        "allowed_values": [
+          "back",
+          "abdomen",
+          "legs",
+          "left_shoulder_arm",
+          "jaw",
+          "none",
+          "unknown"
+        ],
+        "kind": "list",
+        "unit": "",
+        "value_labels": {
+          "abdomen": "腹部",
+          "back": "后背",
+          "jaw": "下颌",
+          "left_shoulder_arm": "左肩或左臂",
+          "legs": "下肢",
+          "none": "无放射",
+          "unknown": "不清楚"
+        }
+      },
+      "clinical_fact_id": "pain_radiation",
+      "criticality": 5,
+      "display_name": "胸痛放射分布",
+      "notes": "疼痛是否向其他区域放射，允许多值。",
+      "provenance": {},
+      "question_variant_ids": [
+        "qv-6ed0fec73b7ba827de62",
+        "qv-172dac2e24841b20cc06"
+      ],
+      "review_status": "provisional",
+      "source_row_ids": [
+        "chest_pain::主动脉源性::0002",
+        "chest_pain::心肌缺血性冠状动脉::0001"
+      ]
+    },
+    {
+      "answer_schema": {
+        "allowed_values": [
+          "sitting_forward",
+          "rest",
+          "nitroglycerin",
+          "antacid",
+          "sitting_up",
+          "none",
+          "unknown"
+        ],
+        "kind": "list",
+        "unit": "",
+        "value_labels": {
+          "antacid": "制酸剂缓解",
+          "nitroglycerin": "硝酸甘油缓解",
+          "none": "无缓解",
+          "rest": "休息缓解",
+          "sitting_forward": "坐起前倾缓解",
+          "sitting_up": "坐起缓解",
+          "unknown": "不清楚"
+        }
+      },
+      "clinical_fact_id": "pain_relieving_factor",
+      "criticality": 4,
+      "display_name": "胸痛缓解因素",
+      "notes": "可同时存在多个缓解因素。",
+      "provenance": {},
+      "question_variant_ids": [
+        "qv-d660c42531f71c109602",
+        "qv-9feeb1a04c533600985a",
+        "qv-e8fa5c5ebda146e376b5"
+      ],
+      "review_status": "provisional",
+      "source_row_ids": [
+        "chest_pain::心包源性::0002",
+        "chest_pain::心肌缺血性冠状动脉::0003",
+        "chest_pain::食管胃肠源性::0002"
+      ]
+    },
+    {
+      "answer_schema": {
+        "allowed_values": [
+          "mild",
+          "moderate",
+          "severe",
+          "worst_ever",
+          "unknown"
+        ],
+        "kind": "ordinal",
+        "unit": "",
+        "value_labels": {
+          "mild": "轻度",
+          "moderate": "中度",
+          "severe": "重度",
+          "unknown": "不清楚",
+          "worst_ever": "最剧烈"
+        }
+      },
+      "clinical_fact_id": "pain_severity",
+      "criticality": 5,
+      "display_name": "胸痛严重程度",
+      "notes": "有序严重程度；Stage-I 先用离散等级，后续可替换为 numeric schema。",
+      "provenance": {},
+      "question_variant_ids": [
+        "qv-31b27d514b551ee3a2ca"
+      ],
+      "review_status": "provisional",
+      "source_row_ids": [
+        "chest_pain::主动脉源性::0003"
+      ]
+    }
+  ],
+  "question_variants": [
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_aggravating_factor",
+      "provenance": {
+        "criticality": 3,
+        "dimension_key": "aggravating",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-0d8a9c83a55294b1141c",
+      "slot_key": "chest_pain::pain_aggravating_factor",
+      "source_card_id": "chest_pain::食管胃肠源性",
+      "source_row_id": "chest_pain::食管胃肠源性::0001",
+      "target_terms": [
+        "饭后",
+        "卧位",
+        "弯腰"
+      ],
+      "text": "吃完饭或者躺下的时候疼痛会加重吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_radiation",
+      "provenance": {
+        "criticality": 5,
+        "dimension_key": "radiation",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-172dac2e24841b20cc06",
+      "slot_key": "chest_pain::pain_radiation",
+      "source_card_id": "chest_pain::心肌缺血性冠状动脉",
+      "source_row_id": "chest_pain::心肌缺血性冠状动脉::0001",
+      "target_terms": [
+        "左肩",
+        "左臂内侧",
+        "下颌",
+        "上腹",
+        "后背"
+      ],
+      "text": "疼痛有没有放射到左肩、左臂或者下巴？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_character",
+      "provenance": {
+        "criticality": 5,
+        "dimension_key": "character",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-2c09a03e50c96d80b26e",
+      "slot_key": "chest_pain::pain_character",
+      "source_card_id": "chest_pain::心肌缺血性冠状动脉",
+      "source_row_id": "chest_pain::心肌缺血性冠状动脉::0000",
+      "target_terms": [
+        "压榨性",
+        "紧缩感",
+        "沉重感",
+        "压迫感"
+      ],
+      "text": "胸口是像被重物压着还是被勒紧的感觉？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_severity",
+      "provenance": {
+        "criticality": 5,
+        "dimension_key": "severity",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-31b27d514b551ee3a2ca",
+      "slot_key": "chest_pain::pain_severity",
+      "source_card_id": "chest_pain::主动脉源性",
+      "source_row_id": "chest_pain::主动脉源性::0003",
+      "target_terms": [
+        "极度剧烈",
+        "10/10"
+      ],
+      "text": "如果0到10分，这个疼痛大概是几分？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_character",
+      "provenance": {
+        "criticality": 5,
+        "dimension_key": "character",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-508f1a278001bffaaffc",
+      "slot_key": "chest_pain::pain_character",
+      "source_card_id": "chest_pain::主动脉源性",
+      "source_row_id": "chest_pain::主动脉源性::0001",
+      "target_terms": [
+        "撕裂样",
+        "刀割样",
+        "撕开的感觉"
+      ],
+      "text": "疼痛是像撕裂或者刀割一样吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "associated_symptoms",
+      "provenance": {
+        "criticality": 4,
+        "dimension_key": "associated",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-59b888bbfa1360b5d644",
+      "slot_key": "chest_pain::associated_symptoms",
+      "source_card_id": "chest_pain::胸膜肺源性",
+      "source_row_id": "chest_pain::胸膜肺源性::0003",
+      "target_terms": [
+        "呼吸困难",
+        "咳血",
+        "发热",
+        "下肢肿胀"
+      ],
+      "text": "有没有喘不上气、咳血、发烧或者腿肿？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_radiation",
+      "provenance": {
+        "criticality": 5,
+        "dimension_key": "radiation",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-6ed0fec73b7ba827de62",
+      "slot_key": "chest_pain::pain_radiation",
+      "source_card_id": "chest_pain::主动脉源性",
+      "source_row_id": "chest_pain::主动脉源性::0002",
+      "target_terms": [
+        "背部",
+        "腹部",
+        "下肢"
+      ],
+      "text": "疼痛有没有向后背或者往下蔓延？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_aggravating_factor",
+      "provenance": {
+        "criticality": 5,
+        "dimension_key": "aggravating",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-6fa19262ba60ae237de9",
+      "slot_key": "chest_pain::pain_aggravating_factor",
+      "source_card_id": "chest_pain::心肌缺血性冠状动脉",
+      "source_row_id": "chest_pain::心肌缺血性冠状动脉::0002",
+      "target_terms": [
+        "活动诱发",
+        "情绪诱发",
+        "寒冷诱发"
+      ],
+      "text": "走路、上楼或者情绪激动的时候疼痛会加重吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_character",
+      "provenance": {
+        "criticality": 3,
+        "dimension_key": "character",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-729fdacf7684b25a074b",
+      "slot_key": "chest_pain::pain_character",
+      "source_card_id": "chest_pain::胸壁骨骼肌源性",
+      "source_row_id": "chest_pain::胸壁骨骼肌源性::0002",
+      "target_terms": [
+        "钝痛",
+        "酸痛",
+        "局部"
+      ],
+      "text": "是持续的钝痛还是针扎一样的痛？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_character",
+      "provenance": {
+        "criticality": 4,
+        "dimension_key": "character",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-86942363cb16d632ee38",
+      "slot_key": "chest_pain::pain_character",
+      "source_card_id": "chest_pain::胸膜肺源性",
+      "source_row_id": "chest_pain::胸膜肺源性::0001",
+      "target_terms": [
+        "锐利",
+        "刺痛"
+      ],
+      "text": "疼痛是尖锐的刺痛感吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_aggravating_factor",
+      "provenance": {
+        "criticality": 4,
+        "dimension_key": "aggravating",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-8ff104f18858f38fb54e",
+      "slot_key": "chest_pain::pain_aggravating_factor",
+      "source_card_id": "chest_pain::胸膜肺源性",
+      "source_row_id": "chest_pain::胸膜肺源性::0002",
+      "target_terms": [
+        "呼吸加重",
+        "咳嗽加重"
+      ],
+      "text": "深吸气或咳嗽的时候疼痛会加重吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_character",
+      "provenance": {
+        "criticality": 4,
+        "dimension_key": "character",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-9b08c280ce03d2e39343",
+      "slot_key": "chest_pain::pain_character",
+      "source_card_id": "chest_pain::心包源性",
+      "source_row_id": "chest_pain::心包源性::0000",
+      "target_terms": [
+        "锐利",
+        "刺痛"
+      ],
+      "text": "疼痛是尖锐的刺痛吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_location",
+      "provenance": {
+        "criticality": 3,
+        "dimension_key": "location",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-9fb1d7e175040af88186",
+      "slot_key": "chest_pain::pain_location",
+      "source_card_id": "chest_pain::胸壁骨骼肌源性",
+      "source_row_id": "chest_pain::胸壁骨骼肌源性::0000",
+      "target_terms": [
+        "局限性",
+        "有压痛点"
+      ],
+      "text": "请用手指指出最疼的那个点。按压那个位置会更疼吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_relieving_factor",
+      "provenance": {
+        "criticality": 5,
+        "dimension_key": "relieving",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-9feeb1a04c533600985a",
+      "slot_key": "chest_pain::pain_relieving_factor",
+      "source_card_id": "chest_pain::心肌缺血性冠状动脉",
+      "source_row_id": "chest_pain::心肌缺血性冠状动脉::0003",
+      "target_terms": [
+        "休息缓解",
+        "硝酸甘油缓解"
+      ],
+      "text": "休息或者含服药物后疼痛能缓解吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_character",
+      "provenance": {
+        "criticality": 3,
+        "dimension_key": "character",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-a37cf84e7ff69682de52",
+      "slot_key": "chest_pain::pain_character",
+      "source_card_id": "chest_pain::食管胃肠源性",
+      "source_row_id": "chest_pain::食管胃肠源性::0000",
+      "target_terms": [
+        "烧灼感",
+        "烧心",
+        "反酸"
+      ],
+      "text": "疼痛是烧心的感觉吗？有没有酸水往上返？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "associated_symptoms",
+      "provenance": {
+        "criticality": 3,
+        "dimension_key": "associated",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-a42e73adefdc9c81d40f",
+      "slot_key": "chest_pain::associated_symptoms",
+      "source_card_id": "chest_pain::食管胃肠源性",
+      "source_row_id": "chest_pain::食管胃肠源性::0003",
+      "target_terms": [
+        "反酸",
+        "嗳气",
+        "吞咽困难"
+      ],
+      "text": "有没有反酸、嗳气或者吞咽困难？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_onset_pattern",
+      "provenance": {
+        "criticality": 4,
+        "dimension_key": "onset",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-adc00e1613fdd1ba9b7c",
+      "slot_key": "chest_pain::pain_onset_pattern",
+      "source_card_id": "chest_pain::胸膜肺源性",
+      "source_row_id": "chest_pain::胸膜肺源性::0000",
+      "target_terms": [
+        "突发"
+      ],
+      "text": "疼痛是突然出现的吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "associated_symptoms",
+      "provenance": {
+        "criticality": 5,
+        "dimension_key": "associated",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-b4781b08ccbc0c959d9e",
+      "slot_key": "chest_pain::associated_symptoms",
+      "source_card_id": "chest_pain::心肌缺血性冠状动脉",
+      "source_row_id": "chest_pain::心肌缺血性冠状动脉::0004",
+      "target_terms": [
+        "大汗",
+        "气短",
+        "恶心",
+        "濒死感"
+      ],
+      "text": "疼痛发作时有没有出冷汗、喘不上气或者恶心？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_duration",
+      "provenance": {
+        "criticality": 5,
+        "dimension_key": "timing",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-b700b713bfa746a018ef",
+      "slot_key": "chest_pain::pain_duration",
+      "source_card_id": "chest_pain::心肌缺血性冠状动脉",
+      "source_row_id": "chest_pain::心肌缺血性冠状动脉::0005",
+      "target_terms": [
+        "清晨多发",
+        "持续数分钟至数十分钟"
+      ],
+      "text": "疼痛一般持续多长时间？是几秒钟、几分钟还是更久？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_relieving_factor",
+      "provenance": {
+        "criticality": 4,
+        "dimension_key": "relieving",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-d660c42531f71c109602",
+      "slot_key": "chest_pain::pain_relieving_factor",
+      "source_card_id": "chest_pain::心包源性",
+      "source_row_id": "chest_pain::心包源性::0002",
+      "target_terms": [
+        "坐起前倾缓解"
+      ],
+      "text": "坐起来身体往前倾的时候会不会好一些？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_onset_pattern",
+      "provenance": {
+        "criticality": 5,
+        "dimension_key": "onset",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-db90efa1c5e8c303c61a",
+      "slot_key": "chest_pain::pain_onset_pattern",
+      "source_card_id": "chest_pain::主动脉源性",
+      "source_row_id": "chest_pain::主动脉源性::0000",
+      "target_terms": [
+        "突发",
+        "瞬间达峰"
+      ],
+      "text": "疼痛是突然发生的吗？一发作就是最疼的程度？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_relieving_factor",
+      "provenance": {
+        "criticality": 3,
+        "dimension_key": "relieving",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-e8fa5c5ebda146e376b5",
+      "slot_key": "chest_pain::pain_relieving_factor",
+      "source_card_id": "chest_pain::食管胃肠源性",
+      "source_row_id": "chest_pain::食管胃肠源性::0002",
+      "target_terms": [
+        "制酸剂",
+        "坐起"
+      ],
+      "text": "吃胃药或者坐起来后会好转吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_aggravating_factor",
+      "provenance": {
+        "criticality": 4,
+        "dimension_key": "aggravating",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-efa97bfe9d2b530da9c4",
+      "slot_key": "chest_pain::pain_aggravating_factor",
+      "source_card_id": "chest_pain::心包源性",
+      "source_row_id": "chest_pain::心包源性::0001",
+      "target_terms": [
+        "吸气加重",
+        "咳嗽加重",
+        "平卧加重"
+      ],
+      "text": "深吸气或者躺平的时候疼痛会更厉害吗？"
+    },
+    {
+      "channel": "Structured",
+      "clinical_fact_id": "pain_aggravating_factor",
+      "provenance": {
+        "criticality": 3,
+        "dimension_key": "aggravating",
+        "source_review_status": "unreviewed"
+      },
+      "question_variant_id": "qv-fb67df18cdb4ff06924a",
+      "slot_key": "chest_pain::pain_aggravating_factor",
+      "source_card_id": "chest_pain::胸壁骨骼肌源性",
+      "source_row_id": "chest_pain::胸壁骨骼肌源性::0001",
+      "target_terms": [
+        "特定动作",
+        "扭转",
+        "抬臂"
+      ],
+      "text": "转身、抬手或者某个特定动作会诱发疼痛吗？"
+    }
+  ]
+}

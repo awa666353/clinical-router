@@ -1,0 +1,43 @@
+# Caddyfile for an IP-only deployment using a Let's Encrypt IP certificate.
+#
+# Requirements:
+#   * Caddy 2.10 or newer
+#   * a fixed public IPv4 address (EIP recommended)
+#   * inbound TCP 80 and 443 reachable from the Internet
+#
+# Usage:
+#   cp deploy/Caddyfile.ip.example deploy/Caddyfile
+#   sed -i 's/<PUBLIC_IP>/203.0.113.10/g' deploy/Caddyfile
+#
+# Note:
+#   TLS clients do not send SNI for bare IP addresses, so default_sni is
+#   required for Caddy to select the IP certificate on the 443 listener.
+
+{
+    default_sni <PUBLIC_IP>
+}
+
+https://<PUBLIC_IP> {
+    tls {
+        issuer acme {
+            profile shortlived
+        }
+    }
+
+    encode zstd gzip
+
+    reverse_proxy api:8080 {
+        transport http {
+            dial_timeout 5s
+            response_header_timeout 300s
+        }
+    }
+
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        X-Content-Type-Options "nosniff"
+        -Server
+    }
+
+    log off
+}

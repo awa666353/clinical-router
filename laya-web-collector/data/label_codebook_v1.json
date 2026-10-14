@@ -1,0 +1,77 @@
+{
+  "version": "real-pilot-label-v1",
+  "status": "frozen_for_pilot",
+  "labels": {
+    "acquired": {
+      "question": "Did the patient actually provide a relevant response for the target fact?",
+      "values": [
+        "yes",
+        "no",
+        "uncertain",
+        "not_applicable",
+        "unable_to_assess"
+      ],
+      "yes_definition": "Patient answered, denied, or explicitly said unknown/unclear for the target fact.",
+      "no_definition": "No response, refusal, off-topic answer, or answer about another fact."
+    },
+    "recorded": {
+      "question": "Did the system or clinician record the patient's meaning correctly?",
+      "values": [
+        "yes",
+        "no",
+        "uncertain",
+        "not_applicable",
+        "unable_to_assess"
+      ],
+      "yes_definition": "Recorded value is semantically faithful and schema-valid.",
+      "no_definition": "Wrong, missing, wrong polarity, or schema-invalid record."
+    },
+    "usable": {
+      "question": "Is the record sufficient to resolve the target fact?",
+      "values": [
+        "yes",
+        "no",
+        "uncertain",
+        "not_applicable",
+        "unable_to_assess"
+      ],
+      "yes_definition": "Record explicitly resolves the target fact without further guessing.",
+      "no_definition": "Missing, ambiguous, off-topic, or wrong polarity."
+    },
+    "actionable": {
+      "question": "Is the fact sufficient to support the next clinical action?",
+      "values": [
+        "yes",
+        "no",
+        "uncertain",
+        "not_applicable",
+        "unable_to_assess"
+      ],
+      "yes_definition": "Fact supports a defined next-step clinical decision.",
+      "no_definition": "More facts are needed or the action is not supported."
+    }
+  },
+  "dependency_rules": [
+    "acquired in no/not_applicable/unable_to_assess implies usable != yes",
+    "acquired in no/not_applicable/unable_to_assess implies actionable != yes",
+    "recorded in no/not_applicable/unable_to_assess implies usable != yes",
+    "recorded in no/not_applicable/unable_to_assess implies actionable != yes",
+    "usable in no/not_applicable/unable_to_assess implies actionable != yes"
+  ],
+  "required_independent_raters": 2,
+  "export_requires_consensus": true,
+  "failure_codes": [
+    "patient_no_response",
+    "patient_refused",
+    "patient_off_topic",
+    "question_missing",
+    "recording_missing",
+    "recording_invalid",
+    "llm_timeout",
+    "llm_schema_error",
+    "llm_safety_filtered",
+    "extraction_failed",
+    "system_error"
+  ],
+  "non_binary_label_policy": "Preserve in route sample; never coerce uncertain/not_applicable/unable_to_assess to no."
+}

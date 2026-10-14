@@ -1,0 +1,16 @@
+[Unit]
+Description=Laya real-pilot clinical collector
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=laya
+WorkingDirectory=/opt/laya-web-collector
+EnvironmentFile=/etc/laya-web-collector.env
+ExecStart=/opt/laya-web-collector/.venv/bin/uvicorn backend.app:app --host 127.0.0.1 --port 8080 --workers 2
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

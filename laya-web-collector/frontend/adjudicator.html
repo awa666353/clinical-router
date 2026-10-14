@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>裁定队列 · Laya</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">A</div><div>独立裁定队列</div></div>
+    <div class="top-actions">
+      <span class="pill warn">默认隐藏 channel</span>
+      <span class="pill" id="current-user">—</span>
+      <a class="btn small ghost" href="/">返回首页</a>
+    </div>
+  </header>
+  <main class="page">
+    <section class="card hero-card adjudication-intro">
+      <div class="section-title"><h2>只看事实是否被正确采集</h2><span class="tiny muted" id="queue-count"></span></div>
+      <p class="muted adjudication-copy">
+        裁定者看到 target fact、问题、原始回答和机器候选。默认不看 channel，也不看 AI 自信度；
+        需要审计时再展开。请分别判断 acquired、recorded、usable、actionable。
+      </p>
+    </section>
+    <section class="queue-list" id="queue"><div class="empty">加载中…</div></section>
+  </main>
+
+  <script src="/assets/app.js" defer></script>
+  <script src="/assets/page-adjudicator.js" defer></script>
+</body>
+</html>

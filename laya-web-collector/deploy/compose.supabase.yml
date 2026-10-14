@@ -1,0 +1,85 @@
+# Docker Compose deployment for the hosted Supabase pilot collector (W9).
+#
+# Run from the web_collector directory (the parent of deploy/):
+#
+#   1. cp deploy/env.supabase.example /etc/laya/collector.env
+#      # edit the placeholders, then: chown root:root /etc/laya/collector.env
+#      #                            chmod 600 /etc/laya/collector.env
+#      # never commit the filled-in env file to Git
+#   2. cp deploy/Caddyfile.example deploy/Caddyfile
+#      # replace collector.<domain> with the real hostname
+#   3. docker compose -f deploy/compose.supabase.yml up -d --build
+#
+# Operational constraints:
+#   * EXACTLY ONE worker instance (guide W6.6).  FOR UPDATE SKIP LOCKED would
+#     tolerate more, but this pilot does not need it; do not add replicas.
+#   * `api` must NOT publish 8080 to the host/internet.  Only Caddy joins the
+#     public side and reaches the API by its compose service name (`api:8080`).
+#   * `api` and `worker` need outbound TLS to Supabase and the LLM endpoint,
+#     so the app network is a normal bridge, not `internal: true`.
+#   * Caddy is the only service with host ports; it never receives the secret
+#     env file (`/etc/laya/collector.env` is for api/worker only).
+
+name: laya-collector
+
+services:
+  api:
+    image: laya-collector:latest
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - /etc/laya/collector.env
+    # Internal-only; deliberately no `ports:` mapping.
+    expose:
+      - "8080"
+    networks:
+      - app_net
+
+  worker:
+    # Same image: the default uvicorn CMD is replaced by the job poller.
+    image: laya-collector:latest
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - /etc/laya/collector.env
+    command: ["python","scripts/process_question_jobs.py"]
+    networks:
+      - app_net
+    # The image HEALTHCHECK probes the API port, which the worker does not
+    # serve; verify instead that PID 1 is still the configured job poller.
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - "-c"
+        - "import pathlib, sys; sys.exit(0 if b'process_question_jobs.py' in pathlib.Path('/proc/1/cmdline').read_bytes() else 1)"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - app_net
+    # No env_file: Caddy must not receive application secrets.
+
+networks:
+  app_net:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -1,0 +1,59 @@
+[
+  {
+    "id": "commute",
+    "title": "通勤路上的胸闷",
+    "chief_complaint": "胸痛",
+    "persona": "你是一名 38 岁的上班族，正在扮演一位因胸口不适来就诊的患者。",
+    "opening": "今天赶路时胸口突然发闷，所以来问问。",
+    "acting_rule": "用第一人称、日常口吻回答。只说医生问到的内容；没写在病历卡上的事就说不清楚。不要主动说出病历卡或诊断。",
+    "answers": {
+      "associated_symptoms": "刚才有点出冷汗，没有发烧或咳嗽。",
+      "pain_aggravating_factor": "走快或者上楼时会更明显。",
+      "pain_character": "像胸口被压住，闷闷的。",
+      "pain_duration": "这次大概持续了二十分钟。",
+      "pain_location": "主要在胸口中间。",
+      "pain_onset_pattern": "今天赶路时突然开始。",
+      "pain_radiation": "有时左肩也有点不舒服。",
+      "pain_relieving_factor": "停下来休息后稍微好一些。",
+      "pain_severity": "大概七分，挺影响我走路。"
+    }
+  },
+  {
+    "id": "after_meal",
+    "title": "晚饭后的灼热感",
+    "chief_complaint": "胸痛",
+    "persona": "你是一名 29 岁的上班族，正在扮演一位饭后胸口不舒服的患者。",
+    "opening": "昨晚吃完饭后胸口有点烧，今天想问问。",
+    "acting_rule": "用第一人称、日常口吻回答。只说医生问到的内容；没写在病历卡上的事就说不清楚。不要主动说出病历卡或诊断。",
+    "answers": {
+      "associated_symptoms": "嘴里有点酸味，没有明显喘不上气。",
+      "pain_aggravating_factor": "吃得多或者躺下时更明显。",
+      "pain_character": "胸口像烧着一样，有点灼热。",
+      "pain_duration": "每次能持续半小时到一小时。",
+      "pain_location": "胸口正中偏下。",
+      "pain_onset_pattern": "昨晚吃完饭后慢慢出现。",
+      "pain_radiation": "没有感觉扩散到胳膊或背上。",
+      "pain_relieving_factor": "坐起来休息一会儿会好一些。",
+      "pain_severity": "大概四分，还能正常说话做事。"
+    }
+  },
+  {
+    "id": "deep_breath",
+    "title": "深呼吸时的刺痛",
+    "chief_complaint": "胸痛",
+    "persona": "你是一名 46 岁的患者，正在扮演一位呼吸时胸口刺痛的人。",
+    "opening": "今天早上开始胸口一吸气就有点刺痛。",
+    "acting_rule": "用第一人称、日常口吻回答。只说医生问到的内容；没写在病历卡上的事就说不清楚。不要主动说出病历卡或诊断。",
+    "answers": {
+      "associated_symptoms": "这两天有点咳嗽，也觉得发热。",
+      "pain_aggravating_factor": "深吸气和咳嗽的时候更疼。",
+      "pain_character": "像针扎一样，一下一下的。",
+      "pain_duration": "今天早上开始，吸气时反复会疼。",
+      "pain_location": "胸口右侧。",
+      "pain_onset_pattern": "今天早上开始注意到的。",
+      "pain_radiation": "没有扩散到别的地方。",
+      "pain_relieving_factor": "不深呼吸、少咳嗽时会轻一些。",
+      "pain_severity": "大概五分。"
+    }
+  }
+]

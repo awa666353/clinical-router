@@ -1,0 +1,93 @@
+body {
+  background: linear-gradient(180deg, #f2f8ff 0, #fbfdff 45%, #f7fbff 100%);
+}
+.patient-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 22px 16px 120px;
+}
+.patient-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.patient-title {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -.04em;
+}
+.patient-complaint {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.patient-complaint-value {
+  font-weight: 800;
+  font-size: 20px;
+  margin-top: 4px;
+}
+.patient-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 52vh;
+}
+.patient-chat .bubble {
+  max-width: 82%;
+}
+.patient-composer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+  background: rgba(255,255,255,.95);
+  border-top: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+.patient-composer-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+.patient-composer-main {
+  grid-column: 1 / -1;
+}
+.quick {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.quick button {
+  border: 1px solid var(--line);
+  background: #f5f9ff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--muted);
+}
+.patient-chat .bubble.patient-question {
+  max-width: 92%;
+  align-self: stretch;
+}
+.patient-chat .bubble.patient-question.active {
+  background: #fff7e8;
+  border-color: #f0d39b;
+}
+.patient-question-actions {
+  margin-top: 10px;
+}
+.patient-chat .bubble.patient-active-question {
+  align-self: center;
+  max-width: 92%;
+  background: #fff7e8;
+  border-color: #f0d39b;
+}
