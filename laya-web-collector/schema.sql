@@ -1,3 +1,0 @@
--- Single source of truth for the Postgres schema: supabase/migrations/
--- (including 20261013120000_roleplay_game_scores.sql and
--- 20261014120000_game_medical_notes.sql for local role-play records).
